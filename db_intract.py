@@ -71,7 +71,7 @@ def test_get(user_name, task_id):
     conn = sqlite3.connect(f"{user_name}.db")
     c = conn.cursor()
 
-    c.execute(f"""select * from time_tracked WHERE key = 'e5e95f9a31f0db3fda0fe3d369781426'""")
+    c.execute(f"""select datetime(time_stamp,'unixepoch') from time_tracked """)
     output = c.fetchall()
 
     print(output)
