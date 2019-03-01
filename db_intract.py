@@ -28,7 +28,6 @@ def create_task(user_name, task_name):
     c = conn.cursor()
 
     # Creates unique task id for future referencing.
-    # The task-specific table will be named by this
     task_id = token(8)
 
     # Inserts new task to task_record table
@@ -71,9 +70,23 @@ def test_get(user_name, task_id):
     conn = sqlite3.connect(f"{user_name}.db")
     c = conn.cursor()
 
-    c.execute(f"""select datetime(time_stamp,'unixepoch') from time_tracked """)
+    #c.execute(f"""select datetime(time_stamp,'unixepoch') from time_tracked """)
+    #output = c.fetchall()
+
+    c.execute(f"""select * from time_tracked """)
     output = c.fetchall()
 
+    duration = output[1][0] - output[0][0]
+
     print(output)
+    print(duration)
+
+    c.execute(f"""select * from task_record """)
+    output = c.fetchall()
+
+
+    print(output)
+    conn.commit()
+    conn.close()
 
     #print(type(output[0]))

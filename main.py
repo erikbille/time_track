@@ -22,11 +22,11 @@ def main():
     db.stop_timer("test_user", test_task_id, timer_token)
 
     timer_token = db.start_timer("test_user", test_task_id)
-    time.sleep(5)
+    #time.sleep(5)
     db.stop_timer("test_user", test_task_id, timer_token)
 
     timer_token = db.start_timer("test_user", test_task_id)
-    time.sleep(5)
+    #time.sleep(5)
     db.stop_timer("test_user", test_task_id, timer_token)
 
     db.test_get("test_user", test_task_id)
